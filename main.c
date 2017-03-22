@@ -2,20 +2,20 @@
 
 int main()
 {
-    Graph G = (Graph)malloc(sizeof(Graph));
+    Graph G = (Graph)malloc(sizeof(Gra));
     InitData(G);
     int op = 1;
     while(op)
     {
-        //system("cls");
-        printf("\n~æ¬¢è¿ä½¿ç”¨ä¸­å›½è¡Œæ”¿åŒºåŸŸå›¾æŸ“è‰²ä¸ä¿¡æ¯æŸ¥è¯¢ç³»ç»Ÿï¼~ \n");
+        system("cls");
+        printf("\n~»¶Ó­Ê¹ÓÃÖĞ¹úĞĞÕşÇøÓòÍ¼È¾É«ÓëĞÅÏ¢²éÑ¯ÏµÍ³£¡~ \n");
         printf("-------------------------------------\n");
-        printf("    	  1. åœ°å›¾æŸ“è‰² \n\n");
-        printf("    	  2. çœä»½ä¿¡æ¯æŸ¥è¯¢ \n\n");
-        printf("    	  3. æ¶è®¾é€šä¿¡ç½‘ \n\n");
-        printf("    	  0. é€€å‡º \n");
+        printf("    	  1. µØÍ¼È¾É« \n\n");
+        printf("    	  2. Ê¡·İĞÅÏ¢²éÑ¯ \n\n");
+        printf("    	  3. ¼ÜÉèÍ¨ĞÅÍø \n\n");
+        printf("    	  0. ÍË³ö \n");
         printf("-------------------------------------\n");
-        printf("    è¯·è¾“å…¥ä½ æƒ³æ‰§è¡Œçš„åŠŸèƒ½: " );
+        printf("    ÇëÊäÈëÄãÏëÖ´ĞĞµÄ¹¦ÄÜ: " );
         scanf("%d",&op);
         switch(op)
         {
@@ -23,7 +23,7 @@ int main()
             {
                 int i,color[N]={0};
                 MapColor(G->dist,color);
-                printf("åœ°å›¾çš„æŸ“è‰²æƒ…å†µä¸ºï¼š" );
+                printf("µØÍ¼µÄÈ¾É«Çé¿öÎª£º" );
                 for(i=0;i<N;i++)
                     printf("%d ",color[i]);
                 printf("\n");
@@ -45,11 +45,11 @@ int main()
             case 0:
                 break;
             default:
-                printf("\n     è¾“å…¥æœ‰è¯¯ï¼è¯·é‡è¯•ï¼\n ");
+                printf("\n     ÊäÈëÓĞÎó£¡ÇëÖØÊÔ£¡\n ");
                 getchar();getchar();
         }
     }
-    printf("\n     æœŸå¾…æ‚¨çš„ä¸‹æ¬¡ä½¿ç”¨ï¼\n ");
+    printf("\n     ÆÚ´ıÄúµÄÏÂ´ÎÊ¹ÓÃ£¡\n ");
     free(G);
     return 0;
 }
@@ -89,10 +89,10 @@ void InitData(Graph G)
 void MapColor(int dist[N][N],int s[N])
 {
     int color,area,k;
-    s[0]=1;//ç¬¬ä¸€ä¸ªåŒºåŸŸå…ˆç€è‰²ä¸ºé¢œè‰²1
-    area=1;//ä»ç¬¬äºŒåŒºåŸŸå¼€å§‹è¯•æ¢æŸ“è‰²
-    color=1;//ä»ç¬¬ä¸€ç§é¢œè‰²å¼€å§‹è¯•æ¢
-    while(area<N)//æ˜¯å¦å…¨éƒ¨æŸ“è‰²å®Œæ¯•
+    s[0]=1;//µÚÒ»¸öÇøÓòÏÈ×ÅÉ«ÎªÑÕÉ«1
+    area=1;//´ÓµÚ¶şÇøÓò¿ªÊ¼ÊÔÌ½È¾É«
+    color=1;//´ÓµÚÒ»ÖÖÑÕÉ«¿ªÊ¼ÊÔÌ½
+    while(area<N)//ÊÇ·ñÈ«²¿È¾É«Íê±Ï
     {
         
         while(color<=4)
@@ -100,7 +100,7 @@ void MapColor(int dist[N][N],int s[N])
             if(area>=N)
                 break;
             k=0;
-            while((k<area)&&(s[k]*dist[area][k]!=color))//åˆ¤æ–­æ˜¯å¦é‡è‰²
+            while((k<area)&&(s[k]*dist[area][k]!=color))//ÅĞ¶ÏÊÇ·ñÖØÉ«
                 k++;
             if(k<area)
                 color++;
@@ -108,10 +108,10 @@ void MapColor(int dist[N][N],int s[N])
             {
                 s[area]=color;
                 area++;
-                color=1;
+                color=2;
             }
         }
-        if(color>4)//æ€»å…±æœ‰4ç§é¢œè‰²ï¼Œæ²¡æœ‰æ‰¾åˆ°åˆé€‚çš„é¢œè‰²ï¼Œéœ€è¦è¿›è¡Œå›æº¯
+        if(color>4)//×Ü¹²ÓĞ4ÖÖÑÕÉ«£¬Ã»ÓĞÕÒµ½ºÏÊÊµÄÑÕÉ«£¬ĞèÒª½øĞĞ»ØËİ
         {
             area=area-1;
             color=s[area]+1;
@@ -126,7 +126,7 @@ void Search(Graph G)
     char pro[20];
     do
     {
-        printf("è¯·è¾“å…¥æƒ³è¦æŸ¥è¯¢çš„çœä»½ï¼š \n");
+        printf("ÇëÊäÈëÏëÒª²éÑ¯µÄÊ¡·İ£º \n");
         scanf("%s",pro);
         for (i=0;i<N;i++)
         {
@@ -142,7 +142,7 @@ void Search(Graph G)
             }
         }
         if(!flag)
-            printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n\n" );
+            printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡\n\n" );
     }
     while(!flag);
 }
@@ -150,7 +150,7 @@ void Search(Graph G)
 void Network(Graph G)
 {
     int n,i,j,cnt = 0,num = 0,weight = 0,flag = 0;
-    printf("è¯·è¾“å…¥æ¶è®¾é€šä¿¡ç½‘çš„åœ°åŒºä¸ªæ•° :" );
+    printf("ÇëÊäÈë¼ÜÉèÍ¨ĞÅÍøµÄµØÇø¸öÊı :" );
     scanf("%d",&n);
     if(n>0 && n<=32)
     {
@@ -160,7 +160,7 @@ void Network(Graph G)
             s[i] = (char*)malloc(sizeof(char*));
         do
         {
-            printf("è¯·è¾“å…¥è¿™äº›çœä»½å :" );
+            printf("ÇëÊäÈëÕâĞ©Ê¡·İÃû :" );
             for(i=0;i<n;i++)
                 scanf("%s",s[i]);
             for(i=0;i<n;i++)
@@ -174,7 +174,7 @@ void Network(Graph G)
                         break;
                     }
             if(!flag)
-                printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n\n" );
+                printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡\n\n" );
             cnt = 0;
         }
         while(!flag);
@@ -191,8 +191,8 @@ void Network(Graph G)
                     cnt++;
                 }
         qsort(G->a, cnt, sizeof(G->a[0]), cmp);
-        //æœ€å°ç”Ÿæˆæ ‘çš„Kruskalç®—æ³•
-        for(i=0;i<N;i++) //åˆå§‹åŒ–
+        //×îĞ¡Éú³ÉÊ÷µÄKruskalËã·¨
+        for(i=0;i<N;i++) //³õÊ¼»¯
         {
             father[i] = i;
             son[i] = 1;
@@ -201,23 +201,23 @@ void Network(Graph G)
         {
             if(join(G->a[i].from,G->a[i].to))
             {
-                num++; //è¾¹æ•°åŠ 1
-                weight+=G->a[i].weight; //è®°å½•æƒå€¼ä¹‹å’Œ
-                printf("æœ€å°ç”Ÿæˆæ ‘ä¸­åŠ å…¥è¾¹ï¼š%s to %s\n",proName[G->a[i].from],proName[G->a[i].to]);
+                num++; //±ßÊı¼Ó1
+                weight+=G->a[i].weight; //¼ÇÂ¼È¨ÖµÖ®ºÍ
+                printf("×îĞ¡Éú³ÉÊ÷ÖĞ¼ÓÈë±ß£º%s to %s\n",proName[G->a[i].from],proName[G->a[i].to]);
             }
         }
-        printf("æœ€å°ç”Ÿæˆæ ‘çš„æƒå€¼ä¸ºï¼š%d\n", weight);
+        printf("×îĞ¡Éú³ÉÊ÷µÄÈ¨ÖµÎª£º%d\n", weight);
     }
     else
-        printf("è¾“å…¥é”™è¯¯ï¼\n" );
+        printf("ÊäÈë´íÎó£¡\n" );
 }
 
-int join(int x, int y) //åˆå¹¶
+int join(int x, int y) //ºÏ²¢
 {
     int root1, root2;
     root1 = unionsearch(x);
     root2 = unionsearch(y);
-    if(root1 == root2) //ä¸ºç¯
+    if(root1 == root2) //Îª»·
         return 0;
     else if(son[root1] >= son[root2])
     {

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define N 32 //ä¸­å›½çœä»½æ•°ï¼Œä¸åŒ…æ‹¬é¦™æ¸¯ã€æ¾³é—¨
+#define N 32 //ÖĞ¹úÊ¡·İÊı£¬²»°üÀ¨Ïã¸Û¡¢°ÄÃÅ
 
 typedef struct
 {
@@ -17,15 +17,15 @@ typedef struct
 }Province;
 typedef struct
 {
-    struct edge//è¾¹ç›¸å…³ä¿¡æ¯
+    struct edge//±ßÏà¹ØĞÅÏ¢
     {
         int from;
         int to;
         int weight;
     }a[N*(N-1)/2];
-    Province pro[N];//çœä»½ä¿¡æ¯
-    int dist[N][N];//é‚»æ¥çŸ©é˜µ
-}*Graph;
+    Province pro[N];//Ê¡·İĞÅÏ¢
+    int dist[N][N];//ÁÚ½Ó¾ØÕó
+}Gra,*Graph;
 
 char *proName[] = {"beijing","tianjin","hebei","shanxi","neimeng","liaoning","jilin","heilongjiang","shanghai","jiangsu","zhejiang","fujian","anhui","jiangxi","shandong","henan","hubei","hunan","guangdong","guangxi","hainan","chongqing","sichuan","guizhou","yunnan","xizang","shaanxi","gansu","ningxia","xinjiang","qinghai","taiwan"};
 int father[N],son[N];
@@ -34,8 +34,8 @@ void InitData(Graph G);
 void MapColor(int dist[N][N],int s[N]);
 void Search(Graph G);
 void Network(Graph G);
-int join(int x, int y); //åˆå¹¶
-//æŒ‰å‡åºæ’åˆ—
+int join(int x, int y); //ºÏ²¢
+//°´ÉıĞòÅÅÁĞ
 int comp(const void*a,const void*b)
 {
     return *(int*)a-*(int*)b;
@@ -44,7 +44,7 @@ int cmp(const void *a,const void *b)
 {
     return((struct edge*)a)->weight - ((struct edge*)b)->weight;
 }
-//æŸ¥æ‰¾æ ¹ç»“ç‚¹+è·¯å¾„å‹ç¼©
+//²éÕÒ¸ù½áµã+Â·¾¶Ñ¹Ëõ
 int unionsearch(int x)
 {
     return x == father[x] ? x : unionsearch(father[x]);
